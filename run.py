@@ -34,16 +34,22 @@ filled_buy_orders = {}
 open_sell_orders = {}
 last_order_timestamp = 0
 
-positions = {"1INCHUSDT": False, "BTCUSDT": False, "BNBUSDT": False, "ETHUSDT": False, "FTMUSDT": False, "SOLUSDT": False}
+# Add streams
+streams = {"1INCHUSDT": 'kline_1h', "BTCUSDT": 'kline_1d', "BNBUSDT": 'kline_1d', "ETHUSDT": 'kline_1h',
+           "FTMUSDT": 'kline_1h',"SOLUSDT": 'kline_1h'}
 
+# Total USDT amount for each position
 USDT_to_spend = {"1INCHUSDT": 500, "BTCUSDT": 1000, "BNBUSDT": 1000, "ETHUSDT": 500, "FTMUSDT": 500, "SOLUSDT": 500}
 
-percentage_drop_to_enter = {"1INCHUSDT": -15, "BTCUSDT": -10, "BNBUSDT": -15, "ETHUSDT": -15, "FTMUSDT": -15, "SOLUSDT": -15}
+# The bot will give  Fill or Kill order immediately,
+# when the current price drops x% from the opening level of the current candle
+percentage_drop_to_enter = {"1INCHUSDT": -15, "BTCUSDT": -10, "BNBUSDT": -20, "ETHUSDT": -15, "FTMUSDT": -15, "SOLUSDT": -15}
 
-take_profit = {"1INCHUSDT": 5, "BTCUSDT": 5, "BNBUSDT": 5, "ETHUSDT": 5, "FTMUSDT": 5, "SOLUSDT": 5}
+# Take x% profit
+take_profit = {"1INCHUSDT": 5, "BTCUSDT": 5, "BNBUSDT": 20, "ETHUSDT": 5, "FTMUSDT": 5, "SOLUSDT": 5}
 
-streams = {"1INCHUSDT": 'kline_1h', "BTCUSDT": 'kline_1d', "BNBUSDT": 'kline_1h', "ETHUSDT": 'kline_1h',
-           "FTMUSDT": 'kline_1h',"SOLUSDT": 'kline_1h'}
+positions = {"1INCHUSDT": False, "BTCUSDT": False, "BNBUSDT": False, "ETHUSDT": False, "FTMUSDT": False, "SOLUSDT": False}
+
 
 SOCKET = 'wss://stream.binance.com:9443/ws'
 for stream in streams:
